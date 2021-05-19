@@ -1,5 +1,5 @@
 const { SP } = require('../model');
-const config = require('../config');
+
 
 const create = async (req, res) => {
   console.log('Create SP Product data');

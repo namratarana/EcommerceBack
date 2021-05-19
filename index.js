@@ -6,6 +6,8 @@ const PORT = 8081;
 const routes = require('./routes');
 const cors=require('cors');
 const app = express();
+const dotenv = require('dotenv');
+dotenv.config();
 // const config = require('./config');
 app.use(cors());
 //Swagger
@@ -39,14 +41,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
  routes(app);
- mongoose.connect(config.mongoUrl, {
+ mongoose.connect(process.env.db_connect, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
  })
 
-app.listen(PORT, () => 
+app.listen(process.env.PORT || PORT, () => 
 {
   console.log('Server listening on port: ' + PORT);
 });

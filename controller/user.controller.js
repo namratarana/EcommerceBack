@@ -1,6 +1,6 @@
 const { User } = require('../model');
 const jwt = require('jsonwebtoken');
-const {mongoUrl, privateKey} = require('../config');
+
 
 var custId;
 
@@ -172,7 +172,7 @@ const loginFunction= async (req, res) => {
 
 if (usersInfo !== null) {
   if (usersInfo[0].password === encrypt(password)) {
-    token = jwt.sign({ username: email }, privateKey);
+    token = jwt.sign({ username: email }, process.env.privateKey);
     res.status(200).send({ message: "Login Success", token , email:usersInfo[0].email, name:usersInfo[0].name})
   } else {
     res.status(401).send({ message: "Unauthorized Access"})
@@ -188,7 +188,7 @@ if (usersInfo !== null) {
       console.log(req.headers);
       if (req.headers.authorization) {
         const [bearer, token] = req.headers.authorization.split(" "); // Bearer <token>
-        const decode = jwt.verify(token, privateKey);
+        const decode = jwt.verify(token, process.env.privateKey);
         console.log(decode);
         if (decode['username']) {
           req.username = decode['username'];
