@@ -103,3 +103,4 @@ const getAll = async (req, res) => {
     deleteById,
     getById
   }
+

@@ -39,8 +39,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
  routes(app);
- mongoose.connect(config.mongoUrl, {useNewUrlParser: true});
+ mongoose.connect(config.mongoUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+ })
 
-app.listen(PORT, () => {
+app.listen(PORT, () => 
+{
   console.log('Server listening on port: ' + PORT);
 });
