@@ -47,7 +47,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
   useCreateIndex: true,
   useFindAndModify: false
  })
-
+app.get('/',(req,res)=>{
+  res.send('Welcome');
+})
 app.listen(process.env.PORT || PORT, () => 
 {
   console.log('Server listening on port: ' + PORT);
