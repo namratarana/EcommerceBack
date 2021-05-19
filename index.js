@@ -7,7 +7,7 @@ const cors=require('cors');
 const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
-// const config = require('./config');
+
 app.use(cors());
 //Swagger
 const swaggerUI = require('swagger-ui-express')

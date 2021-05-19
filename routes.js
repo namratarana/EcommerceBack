@@ -7,7 +7,7 @@ const spRouter = express.Router();
 
 const userController = require('./controller/user.controller');
 const userRouter = express.Router();
-const config = require('./config');
+
 
 
 EcommerceRouter.post('/', EcommerceController.create);
